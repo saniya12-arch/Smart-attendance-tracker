@@ -1,65 +1,54 @@
-let attendanceChart, genderChart, topChart;
+let barChart, lineChart;
 
-function generate() {
+function updateDashboard() {
 
-  let total = Number(document.getElementById("total").value);
-  let present = Number(document.getElementById("present").value);
-  let absent = Number(document.getElementById("absent").value);
-  let late = Number(document.getElementById("late").value);
+  let total = +document.getElementById("total").value || 0;
+  let present = +document.getElementById("present").value || 0;
+  let late = +document.getElementById("late").value || 0;
 
-  let male = Number(document.getElementById("male").value);
-  let female = Number(document.getElementById("female").value);
+  let absent = total - present;
 
-  let top = [
-    Number(document.getElementById("top1").value),
-    Number(document.getElementById("top2").value),
-    Number(document.getElementById("top3").value),
-    Number(document.getElementById("top4").value),
-    Number(document.getElementById("top5").value)
-  ];
+  document.getElementById("totalDisplay").innerText = total;
+  document.getElementById("presentDisplay").innerText = present;
+  document.getElementById("absentDisplay").innerText = absent;
+  document.getElementById("lateDisplay").innerText = late;
 
-  // Update cards
-  document.getElementById("c_total").innerText = total;
-  document.getElementById("c_present").innerText = present;
-  document.getElementById("c_absent").innerText = absent;
-  document.getElementById("c_late").innerText = late;
+  updateCharts(present, absent, late);
+}
 
-  // DESTROY OLD CHARTS
-  if (attendanceChart) attendanceChart.destroy();
-  if (genderChart) genderChart.destroy();
-  if (topChart) topChart.destroy();
+function updateCharts(present, absent, late) {
 
-  // ATTENDANCE CHART
-  attendanceChart = new Chart(document.getElementById("attendanceChart"), {
+  if (barChart) barChart.destroy();
+  if (lineChart) lineChart.destroy();
+
+  // BAR CHART
+  barChart = new Chart(document.getElementById("barChart"), {
     type: "bar",
     data: {
       labels: ["Present", "Absent", "Late"],
       datasets: [{
+        label: "Students",
         data: [present, absent, late]
       }]
     }
   });
 
-  // GENDER CHART
-  genderChart = new Chart(document.getElementById("genderChart"), {
-    type: "pie",
-    data: {
-      labels: ["Male", "Female"],
-      datasets: [{
-        data: [male, female]
-      }]
-    }
-  });
-
-  // TOP STUDENTS CHART
-  topChart = new Chart(document.getElementById("topChart"), {
+  // LINE CHART (dummy weekly)
+  lineChart = new Chart(document.getElementById("lineChart"), {
     type: "line",
     data: {
-      labels: ["S1", "S2", "S3", "S4", "S5"],
+      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       datasets: [{
-        data: top
+        label: "Absent",
+        data: [
+          Math.random()*10,
+          Math.random()*10,
+          Math.random()*10,
+          Math.random()*10,
+          Math.random()*10,
+          Math.random()*10
+        ]
       }]
     }
   });
-
 }
