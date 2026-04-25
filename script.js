@@ -1,7 +1,6 @@
 let barChart, lineChart;
 
 function updateDashboard() {
-
   let total = +document.getElementById("total").value || 0;
   let present = +document.getElementById("present").value || 0;
   let late = +document.getElementById("late").value || 0;
@@ -21,7 +20,6 @@ function updateCharts(present, absent, late) {
   if (barChart) barChart.destroy();
   if (lineChart) lineChart.destroy();
 
-  // BAR CHART
   barChart = new Chart(document.getElementById("barChart"), {
     type: "bar",
     data: {
@@ -33,21 +31,13 @@ function updateCharts(present, absent, late) {
     }
   });
 
-  // LINE CHART (dummy weekly)
   lineChart = new Chart(document.getElementById("lineChart"), {
     type: "line",
     data: {
       labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       datasets: [{
         label: "Absent",
-        data: [
-          Math.random()*10,
-          Math.random()*10,
-          Math.random()*10,
-          Math.random()*10,
-          Math.random()*10,
-          Math.random()*10
-        ]
+        data: [9,4,7,7,10,8]
       }]
     }
   });
