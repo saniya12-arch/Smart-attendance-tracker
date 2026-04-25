@@ -2,71 +2,78 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Dashboard</title>
+<title>Attendance Dashboard</title>
+
 <link rel="stylesheet" href="style.css">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
 
 <div class="container">
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <h2>Dredgn</h2>
+  <h2>📊 Attendance Dashboard</h2>
 
-    <ul>
-      <li>Dashboard</li>
-      <li class="active">User People</li>
-      <li>Class Management</li>
-      <li>Subject Management</li>
-      <li>Report Generation</li>
-      <li>Settings</li>
-    </ul>
+  <!-- INPUT SECTION -->
+  <div class="inputs">
+
+    <input id="total" placeholder="Total Students">
+    <input id="present" placeholder="Present Today">
+    <input id="absent" placeholder="Absent Today">
+    <input id="late" placeholder="Late Students">
+
+    <input id="male" placeholder="Male Students">
+    <input id="female" placeholder="Female Students">
+
+    <input id="top1" placeholder="Top Student 1 %">
+    <input id="top2" placeholder="Top Student 2 %">
+    <input id="top3" placeholder="Top Student 3 %">
+    <input id="top4" placeholder="Top Student 4 %">
+    <input id="top5" placeholder="Top Student 5 %">
+
+    <button onclick="generate()">Generate Dashboard</button>
+
   </div>
 
-  <!-- MAIN -->
-  <div class="main">
+  <!-- CARDS -->
+  <div class="cards">
 
-    <h2>Welcome, Saniya 👋</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <h4>Group People</h4>
-        <p>Admin Panel</p>
-      </div>
-
-      <div class="card">
-        <h4>Geobacs</h4>
-        <p>Management</p>
-      </div>
-
+    <div class="card">
+      <h4>Total Students</h4>
+      <p id="c_total">0</p>
     </div>
 
-    <h3>System Overview</h3>
-
-    <div class="cards">
-
-      <div class="card small">
-        <h4>Students</h4>
-        <p>2310</p>
-      </div>
-
-      <div class="card small blue">
-        <h4>Attendance</h4>
-        <p>85%</p>
-      </div>
-
-      <div class="card small">
-        <h4>Subjects</h4>
-        <p>12</p>
-      </div>
-
+    <div class="card green">
+      <h4>Present</h4>
+      <p id="c_present">0</p>
     </div>
+
+    <div class="card red">
+      <h4>Absent</h4>
+      <p id="c_absent">0</p>
+    </div>
+
+    <div class="card yellow">
+      <h4>Late</h4>
+      <p id="c_late">0</p>
+    </div>
+
+  </div>
+
+  <!-- CHARTS -->
+  <div class="charts">
+
+    <canvas id="attendanceChart"></canvas>
+    <canvas id="genderChart"></canvas>
+    <canvas id="topChart"></canvas>
 
   </div>
 
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>
