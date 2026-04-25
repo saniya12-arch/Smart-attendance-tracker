@@ -1,62 +1,104 @@
 body {
-  font-family: Arial;
-  background: #f5f7fb;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f3e7ff, #e0f7fa);
+}
+
+.dashboard {
+  display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: white;
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+  color: #7b61ff;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.active {
+  background: #7b61ff;
+  color: white;
+  border-radius: 10px;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
   padding: 20px;
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-}
-
-h2 {
-  text-align: center;
-}
-
-.inputs {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+/* INPUT */
+.input-box {
+  display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-input {
+.input-box input {
   padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  border-radius: 10px;
+  border: none;
 }
 
-button {
-  grid-column: span 2;
-  padding: 12px;
-  background: #6c5ce7;
+.input-box button {
+  background: #7b61ff;
   color: white;
   border: none;
+  padding: 10px 15px;
   border-radius: 10px;
   cursor: pointer;
 }
 
 /* CARDS */
 .cards {
-  display: flex;
-  gap: 10px;
-  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
 }
 
 .card {
-  flex: 1;
-  padding: 15px;
-  border-radius: 10px;
   background: white;
-  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.green { background: #dff9fb; }
-.red { background: #ffe6e6; }
-.yellow { background: #fff5cc; }
+.card p {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.green { border-left: 6px solid #00c853; }
+.red { border-left: 6px solid #ff1744; }
+.yellow { border-left: 6px solid #ffab00; }
 
 /* CHARTS */
 .charts {
+  margin-top: 30px;
   display: grid;
+  grid-template-columns: 2fr 1fr;
   gap: 20px;
+}
+
+.chart-box {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
 }
