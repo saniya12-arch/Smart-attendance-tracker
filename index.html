@@ -1,74 +1,81 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Attendance Dashboard</title>
+  <meta charset="UTF-8">
+  <title>Smart Attendance Dashboard</title>
 
-<link rel="stylesheet" href="style.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
+<div class="dashboard">
 
-  <h2>📊 Attendance Dashboard</h2>
-
-  <!-- INPUT SECTION -->
-  <div class="inputs">
-
-    <input id="total" placeholder="Total Students">
-    <input id="present" placeholder="Present Today">
-    <input id="absent" placeholder="Absent Today">
-    <input id="late" placeholder="Late Students">
-
-    <input id="male" placeholder="Male Students">
-    <input id="female" placeholder="Female Students">
-
-    <input id="top1" placeholder="Top Student 1 %">
-    <input id="top2" placeholder="Top Student 2 %">
-    <input id="top3" placeholder="Top Student 3 %">
-    <input id="top4" placeholder="Top Student 4 %">
-    <input id="top5" placeholder="Top Student 5 %">
-
-    <button onclick="generate()">Generate Dashboard</button>
-
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>⚡ ATTENDED</h2>
+    <ul>
+      <li class="active">Dashboard</li>
+      <li>Manage Attendance</li>
+      <li>Students</li>
+      <li>Reports</li>
+    </ul>
   </div>
 
-  <!-- CARDS -->
-  <div class="cards">
+  <!-- MAIN -->
+  <div class="main">
 
-    <div class="card">
-      <h4>Total Students</h4>
-      <p id="c_total">0</p>
+    <h2>Hello Saniya 👋</h2>
+
+    <!-- INPUT -->
+    <div class="input-box">
+      <input type="number" id="total" placeholder="Total Students">
+      <input type="number" id="present" placeholder="Present">
+      <input type="number" id="late" placeholder="Late">
+      <button onclick="updateDashboard()">Update</button>
     </div>
 
-    <div class="card green">
-      <h4>Present</h4>
-      <p id="c_present">0</p>
+    <!-- CARDS -->
+    <div class="cards">
+
+      <div class="card">
+        <h3>Total</h3>
+        <p id="totalDisplay">0</p>
+      </div>
+
+      <div class="card green">
+        <h3>Present</h3>
+        <p id="presentDisplay">0</p>
+      </div>
+
+      <div class="card red">
+        <h3>Absent</h3>
+        <p id="absentDisplay">0</p>
+      </div>
+
+      <div class="card yellow">
+        <h3>Late</h3>
+        <p id="lateDisplay">0</p>
+      </div>
+
     </div>
 
-    <div class="card red">
-      <h4>Absent</h4>
-      <p id="c_absent">0</p>
+    <!-- CHARTS -->
+    <div class="charts">
+
+      <div class="chart-box">
+        <h3>Total Attendance Report</h3>
+        <canvas id="barChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h3>Weekly Absent</h3>
+        <canvas id="lineChart"></canvas>
+      </div>
+
     </div>
-
-    <div class="card yellow">
-      <h4>Late</h4>
-      <p id="c_late">0</p>
-    </div>
-
-  </div>
-
-  <!-- CHARTS -->
-  <div class="charts">
-
-    <canvas id="attendanceChart"></canvas>
-    <canvas id="genderChart"></canvas>
-    <canvas id="topChart"></canvas>
 
   </div>
 
